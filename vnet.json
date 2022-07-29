@@ -1,0 +1,119 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "name": "CoreServicesVnet",
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2020-11-01",
+            "location": "East US",
+            "tags": {
+                "displayName": "CoreServicesVnet"
+            },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.20.0.0/16"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "GatewaySubnet",
+                        "properties": {
+                            "addressPrefix": "10.20.0.0/27"
+                        }
+                    },
+                    {
+                        "name": "SharedServicesSubnet",
+                        "properties": {
+                            "addressPrefix": "10.20.10.0/24"
+                        }
+                    },
+                    {
+                        "name": "DatabaseSubnet",
+                        "properties": {
+                            "addressPrefix": "10.20.20.0/24"
+                        }
+                    },
+                    {
+                        "name": "PublicWebServicesSubnet",
+                        "properties": {
+                            "addressPrefix": "10.20.30.0/24"
+                        }
+                    }
+
+                ]
+            }
+        },{
+            "name": "ManufacturingVnet",
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2020-11-01",
+            "location": "West Europe",
+            "tags": {
+                "displayName": "ManufacturingVnet"
+            },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.30.0.0/16"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "ManufacturingSystemSubnet",
+                        "properties": {
+                            "addressPrefix": "10.30.10.0/24"
+                        }
+                    },
+                    {
+                        "name": "SensorSubnet1",
+                        "properties": {
+                            "addressPrefix": "10.30.20.0/24"
+                        }
+                    },
+                    {
+                        "name": "SensorSubnet2",
+                        "properties": {
+                            "addressPrefix": "10.30.21.0/24"
+                        }
+                    },
+                    {
+                        "name": "SensorSubnet3",
+                        "properties": {
+                            "addressPrefix": "10.30.22.0/24"
+                        }
+                    }
+                ]
+            }
+        }, 
+        
+        {
+            "name": "ResearchVnet",
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2020-11-01",
+            "location": "Southeast Asia",
+            "tags": {
+                "displayName": "ResearchVnet"
+            },
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "10.40.0.0/16"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "ResearchSystemSubnet",
+                        "properties": {
+                            "addressPrefix": "10.40.0.0/24"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "outputs": {}
+}
